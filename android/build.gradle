@@ -1,3 +1,4 @@
+
 group 'com.tryingoutsomething.soundmode.sound_mode'
 version '1.0'
 
@@ -8,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.1'
+        classpath 'com.android.tools.build:gradle:8.3.2'
     }
 }
 
@@ -22,15 +23,23 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    defaultConfig {
-        compileSdk 34
-        minSdkVersion 16
+    namespace 'com.tryingoutsomething.soundmode.sound_mode'
+    compileSdk 34
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
     }
+
+    defaultConfig {
+        minSdkVersion 21
+    }
+
     lintOptions {
         disable 'InvalidPackage'
     }
-}
 
-dependencies {
-    implementation 'androidx.annotation:annotation:1.7.0'
+    dependencies {
+        implementation 'androidx.annotation:annotation:1.9.1'
+    }
 }
